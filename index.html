@@ -3,802 +3,990 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satheesh Nithiananthan — Cybersecurity Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<title>SAIZERO - Ground Zero Defence | Cybersecurity Analyst & Security Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0e12;
-    --surface: #111820;
-    --border: #1e2d3d;
-    --accent: #00ff88;
-    --accent2: #00aaff;
-    --red: #ff4455;
-    --text: #c9d5e0;
-    --text-dim: #5a7080;
-    --mono: 'Share Tech Mono', monospace;
-    --sans: 'Syne', sans-serif;
+    --bg: #08111b;
+    --bg-soft: #0f1b2a;
+    --surface: rgba(14, 26, 40, 0.82);
+    --surface-strong: #102133;
+    --border: rgba(155, 194, 221, 0.14);
+    --border-strong: rgba(155, 194, 221, 0.24);
+    --text: #ebf3fb;
+    --text-soft: #a9bbcc;
+    --text-dim: #70869b;
+    --brand: #4ed2c3;
+    --brand-strong: #7be7da;
+    --accent: #68a8ff;
+    --accent-soft: rgba(104, 168, 255, 0.14);
+    --highlight: #ffd166;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    --sans: "Manrope", sans-serif;
+    --display: "Space Grotesk", sans-serif;
+    --radius: 24px;
+    --radius-sm: 16px;
+    --max: 1180px;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    background: var(--bg);
-    color: var(--text);
+    min-height: 100vh;
     font-family: var(--sans);
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(78, 210, 195, 0.12), transparent 30%),
+      radial-gradient(circle at 85% 15%, rgba(104, 168, 255, 0.18), transparent 25%),
+      linear-gradient(180deg, #07111a 0%, #091520 52%, #07111a 100%);
     overflow-x: hidden;
   }
 
-  /* GRID BACKGROUND */
   body::before {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent 85%);
     pointer-events: none;
-    z-index: 0;
   }
 
-  /* SCANLINE */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
-    pointer-events: none;
-    z-index: 0;
+  a {
+    color: inherit;
   }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 3rem;
-    background: rgba(10,14,18,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+  img {
+    max-width: 100%;
+    display: block;
   }
 
-  .logo {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-  }
-
-  .logo span { color: var(--text-dim); }
-
-  nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  nav ul a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-dim);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  nav ul a:hover { color: var(--accent); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 6rem 3rem 3rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-inner {
-    max-width: 900px;
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-family: var(--sans);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-
-  h1 .dim { color: var(--text-dim); }
-
-  .hero-sub {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--accent2);
-    margin: 1.5rem 0 2rem;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-desc {
-    font-size: 16px;
-    color: var(--text);
-    line-height: 1.8;
-    max-width: 580px;
-    margin-bottom: 2.5rem;
-  }
-
-  .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  .btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 12px 28px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    background: transparent;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--accent);
-    transform: translateX(-100%);
-    transition: transform 0.2s;
-    z-index: -1;
-  }
-
-  .btn:hover { color: var(--bg); }
-  .btn:hover::before { transform: translateX(0); }
-
-  .btn-secondary {
-    border-color: var(--border);
-    color: var(--text-dim);
-  }
-
-  .btn-secondary::before { background: var(--border); }
-  .btn-secondary:hover { color: var(--text); }
-
-  /* STATUS BAR */
-  .status-bar {
-    position: absolute;
-    right: 3rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .status-item {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
-  }
-
-  .dot.blue { background: var(--accent2); animation-delay: 0.5s; }
-  .dot.red { background: var(--red); animation-delay: 1s; }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* SECTIONS */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 6rem 3rem;
-    max-width: 1100px;
+  .shell {
+    width: min(100% - 2rem, var(--max));
     margin: 0 auto;
   }
 
-  .section-header {
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(18px);
+    background: rgba(8, 17, 27, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-inner {
+    width: min(100% - 2rem, var(--max));
+    margin: 0 auto;
+    padding: 1rem 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 3rem;
   }
 
-  .section-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.2em;
+  .brand-lockup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
   }
 
-  h2 {
-    font-size: 2rem;
+  .brand-top {
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--brand);
     font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.02em;
   }
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+  .brand-name {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
   }
 
-  /* SERVICES */
-  .services-grid {
+  .brand-name span {
+    color: var(--highlight);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    transition: color 0.25s ease;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--text);
+  }
+
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+    gap: 2rem;
+    align-items: stretch;
   }
 
-  .service-card {
-    background: var(--surface);
-    padding: 2rem;
-    transition: background 0.2s;
+  .hero-copy,
+  .hero-panel {
     position: relative;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
     overflow: hidden;
   }
 
-  .service-card::before {
-    content: '';
+  .hero-copy {
+    padding: 3rem;
+  }
+
+  .hero-copy::before,
+  .hero-panel::before,
+  .card::before,
+  .contact-card::before {
+    content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--accent);
-    transition: height 0.3s;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(123, 231, 218, 0.08), transparent 40%, rgba(104, 168, 255, 0.08));
+    pointer-events: none;
   }
 
-  .service-card:hover { background: #151e28; }
-  .service-card:hover::before { height: 100%; }
-
-  .service-icon {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.1rem;
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.95rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(78, 210, 195, 0.24);
+    border-radius: 999px;
+    background: rgba(78, 210, 195, 0.08);
+    color: var(--brand-strong);
+    font-size: 0.78rem;
     font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-
-  .service-card p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  /* PROJECTS */
-  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-
-  .project-item {
-    background: var(--surface);
-    padding: 1.75rem 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1.5rem;
-    align-items: start;
-    transition: background 0.2s;
-    text-decoration: none;
-  }
-
-  .project-item:hover { background: #151e28; }
-
-  .project-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    padding-top: 3px;
-  }
-
-  .project-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-
-  .project-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-
-  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
     text-transform: uppercase;
+    letter-spacing: 0.16em;
   }
 
-  .tag.green { border-color: rgba(0,255,136,0.3); color: var(--accent); }
-  .tag.blue { border-color: rgba(0,170,255,0.3); color: var(--accent2); }
-
-  .project-arrow {
-    font-size: 18px;
-    color: var(--text-dim);
-    transition: color 0.2s, transform 0.2s;
-    padding-top: 2px;
+  .eyebrow::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 16px rgba(78, 210, 195, 0.65);
   }
 
-  .project-item:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(3rem, 7vw, 5.7rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    margin-bottom: 1.2rem;
+  }
 
-  /* SKILLS */
-  .skills-grid {
+  .headline-accent {
+    display: block;
+    color: var(--highlight);
+  }
+
+  .headline-subline {
+    display: block;
+    color: var(--text);
+  }
+
+  .hero-lead {
+    max-width: 62ch;
+    color: var(--text-soft);
+    font-size: 1.08rem;
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .hero-lead strong {
+    color: var(--text);
+  }
+
+  .hero-highlight {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .metric {
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .metric-value {
+    font-family: var(--display);
+    font-size: 1.55rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 52px;
+    padding: 0 1.35rem;
+    text-decoration: none;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 700;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    color: #06131f;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-strong);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+  }
+
+  .hero-panel {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .panel-chip {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 209, 102, 0.08);
+    border: 1px solid rgba(255, 209, 102, 0.2);
+    color: var(--highlight);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .panel-title {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-copy {
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+
+  .panel-stack {
+    display: grid;
     gap: 1rem;
   }
 
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 1.5rem;
+  .panel-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .skill-group-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--accent);
+  .panel-label {
+    color: var(--text-dim);
+    font-size: 0.82rem;
     text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .panel-value {
+    color: var(--text);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  section {
+    padding: 2.5rem 0 0;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-kicker {
+    color: var(--brand);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 0.55rem;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.04em;
+  }
+
+  .section-intro {
+    max-width: 56ch;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .cards-3,
+  .cards-2 {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .cards-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cards-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card,
+  .project-card,
+  .contact-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .card {
+    padding: 1.8rem;
+  }
+
+  .card-tag {
+    display: inline-flex;
     margin-bottom: 1rem;
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .card h3,
+  .project-card h3,
+  .contact-card h3 {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card p,
+  .project-card p,
+  .contact-card p {
+    color: var(--text-soft);
+    line-height: 1.78;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    padding: 1.8rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .project-card:hover,
+  .project-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(123, 231, 218, 0.28);
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .pill {
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .skills-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.2rem;
+  }
+
+  .skills-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-block {
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .skill-block strong {
+    display: block;
+    margin-bottom: 0.85rem;
+    color: var(--text);
+    font-size: 1rem;
   }
 
   .skill-list {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
 
-  .skill-row {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .skill-list span {
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(104, 168, 255, 0.08);
+    border: 1px solid rgba(104, 168, 255, 0.16);
+    color: #dbe9ff;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 
-  .skill-row::before {
-    content: '▸';
-    color: var(--accent);
-    font-size: 10px;
+  .proof-card {
+    padding: 1.8rem;
   }
 
-  /* CONTACT */
-  .contact-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 3rem;
+  .proof-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    gap: 1rem;
+    margin-top: 1.2rem;
   }
 
-  .contact-box h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 1rem;
+  .proof-item {
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .contact-box p {
-    font-size: 14px;
+  .proof-item small {
+    display: block;
     color: var(--text-dim);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.35rem;
   }
 
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .contact-card {
+    padding: 2rem;
+  }
+
+  .contact-links {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
 
   .contact-link {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-dim);
+    align-items: center;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
     text-decoration: none;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
 
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link:hover,
+  .contact-link:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(123, 231, 218, 0.28);
+  }
 
-  .contact-label {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+  .contact-link span:first-child {
     color: var(--text-dim);
-    min-width: 80px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
   }
 
-  /* FOOTER */
   footer {
-    position: relative;
-    z-index: 1;
-    border-top: 1px solid var(--border);
-    padding: 2rem 3rem;
+    padding: 0 0 2rem;
+  }
+
+  .footer-bar {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     align-items: center;
-  }
-
-  footer p {
-    font-family: var(--mono);
-    font-size: 11px;
+    padding: 1.4rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-dim);
+    font-size: 0.9rem;
   }
 
-  footer span { color: var(--accent); }
+  .footer-bar strong {
+    color: var(--text);
+  }
 
-  /* ANIMATIONS */
-  .fade-in {
+  .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.6s forwards;
+    transform: translateY(18px);
+    animation: rise 0.7s ease forwards;
   }
 
-  @keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
+  .reveal:nth-child(2) { animation-delay: 0.08s; }
+  .reveal:nth-child(3) { animation-delay: 0.16s; }
+  .reveal:nth-child(4) { animation-delay: 0.24s; }
+  .reveal:nth-child(5) { animation-delay: 0.32s; }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .fade-in:nth-child(1) { animation-delay: 0.1s; }
-  .fade-in:nth-child(2) { animation-delay: 0.2s; }
-  .fade-in:nth-child(3) { animation-delay: 0.3s; }
-  .fade-in:nth-child(4) { animation-delay: 0.4s; }
-  .fade-in:nth-child(5) { animation-delay: 0.5s; }
+  @media (max-width: 980px) {
+    .hero-grid,
+    .skills-wrap,
+    .contact-grid,
+    .project-grid,
+    .cards-3,
+    .cards-2 {
+      grid-template-columns: 1fr;
+    }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { gap: 1rem; }
-    .hero { padding: 5rem 1.5rem 3rem; }
-    .status-bar { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .contact-box { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-    .project-item { grid-template-columns: auto 1fr; }
-    .project-arrow { display: none; }
+    .skills-board {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-highlight {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .nav-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    nav ul {
+      gap: 1rem;
+    }
+
+    .hero {
+      padding-top: 2rem;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .card,
+    .project-card,
+    .contact-card {
+      padding: 1.4rem;
+      border-radius: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .footer-bar,
+    .contact-link {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="logo"><span>//</span> SAIZERO <span>—</span> GROUND ZERO DEFENCE</div>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag fade-in">Cybersecurity Analyst & Ethical Hacker</div>
-    <h1 class="fade-in">Satheesh<br><span class="dim">Nithiananthan</span></h1>
-    <div class="hero-sub fade-in">[ OFFENSIVE · DEFENSIVE · DOCUMENTATION ]</div>
-    <p class="hero-desc fade-in">
-      Vulnerability assessment, penetration testing, and blue team defence — 
-      operating independently under SAIZERO since 2024. Every engagement 
-      comes with a structured report clients can act on.
-    </p>
-    <div class="btn-row fade-in">
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="#contact" class="btn btn-secondary">Hire Me</a>
-      <a href="https://github.com/Satz-N-Sentry" target="_blank" class="btn btn-secondary">GitHub ↗</a>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand-lockup">
+        <div class="brand-top">Satheesh Nithiananthan | Cybersecurity Analyst & Security Researcher</div>
+        <div class="brand-name"><span>SAIZERO - Ground Zero Defence</span></div>
+      </div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Expertise</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
-  <div class="status-bar">
-    <div class="status-item"><div class="dot"></div> TryHackMe — Active</div>
-    <div class="status-item"><div class="dot blue"></div> HackTheBox — Active</div>
-    <div class="status-item"><div class="dot red"></div> Bugcrowd — Active</div>
-    <div class="status-item"><div class="dot"></div> CEH — In Progress</div>
-    <div class="status-item"><div class="dot blue"></div> eJPT — In Progress</div>
-  </div>
-</div>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="hero-copy reveal">
+          <div class="eyebrow">Independent Cybersecurity Practice Since 2024</div>
+          <h1>
+            <span class="headline-accent">SAIZERO - Ground Zero Defence</span>
+            <span class="headline-subline">CyberLycan operating through SAIZERO</span>
+          </h1>
+          <p class="hero-lead">
+            I help teams strengthen web applications, APIs, and security operations through
+            <strong>disciplined testing, clear reporting, and practical remediation guidance</strong>.
+            SAIZERO is my independent cybersecurity practice, with CyberLycan as the identity I use in the cybersecurity field for focused freelance engagements.
+          </p>
+          <div class="hero-highlight">
+            <div class="metric">
+              <div class="metric-value">Web & API</div>
+              <div class="metric-label">Security assessments with report-ready findings</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">Blue Team</div>
+              <div class="metric-label">Wazuh monitoring, detection rules, and log analysis</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">Client-Ready</div>
+              <div class="metric-label">Executive summaries, CVSS ratings, and fixes</div>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a href="#projects" class="btn btn-primary">View Selected Work</a>
+            <a href="#contact" class="btn btn-secondary">Discuss an Engagement</a>
+          </div>
+        </article>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-header">
-    <span class="section-num">01 //</span>
-    <h2>Services</h2>
-    <div class="section-line"></div>
-  </div>
+        <aside class="hero-panel reveal">
+          <div>
+            <div class="panel-chip">Brand Spotlight</div>
+            <h2 class="panel-title">Company-first branding with a clear cyber identity.</h2>
+            <p class="panel-copy">
+              The page now positions <strong>SAIZERO - Ground Zero Defence</strong> as the lead brand while
+              <strong>CyberLycan</strong> reads as the operating identity behind the work.
+            </p>
+          </div>
+          <div class="panel-stack">
+            <div class="panel-row">
+              <div class="panel-label">Primary Focus</div>
+              <div class="panel-value">VAPT, API Security, SIEM Analysis</div>
+            </div>
+            <div class="panel-row">
+              <div class="panel-label">Delivery Style</div>
+              <div class="panel-value">Structured findings with remediation guidance</div>
+            </div>
+            <div class="panel-row">
+              <div class="panel-label">Positioning</div>
+              <div class="panel-value">CyberLycan operating through the SAIZERO brand</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">[ RED ]</div>
-      <h3>Vulnerability Assessment & Penetration Testing</h3>
-      <p>Full VAPT engagements on web applications. Findings mapped to OWASP Top 10 with severity ratings and remediation steps.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">[ API ]</div>
-      <h3>API Security Testing</h3>
-      <p>REST API security analysis covering OWASP API Top 10 — BOLA, JWT weaknesses, mass assignment, excessive data exposure.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">[ BLUE ]</div>
-      <h3>SIEM & Log Analysis</h3>
-      <p>Real-time threat detection using Wazuh SIEM. Port scan detection, log monitoring, and custom alert rule configuration.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">[ PHI ]</div>
-      <h3>Phishing Analysis</h3>
-      <p>Email header forensics, sender spoofing detection, malicious link analysis, and IOC extraction using industry tools.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">[ DOC ]</div>
-      <h3>Security Report Writing</h3>
-      <p>Clear, structured security reports with executive summaries, technical findings, risk ratings, and actionable fixes.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">[ AND ]</div>
-      <h3>Android Security Analysis</h3>
-      <p>Static and dynamic analysis of Android applications — suspicious permissions, malicious behaviour detection, threat classification.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <span class="section-num">02 //</span>
-    <h2>Projects</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="projects-list">
-    <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_01" target="_blank" class="project-item">
-      <span class="project-num">01</span>
-      <div>
-        <div class="project-title">VAPT Report — OWASP Juice Shop</div>
-        <div class="project-desc">Full vulnerability assessment identifying 7 issues including SQL injection, XSS, and broken access control. Structured report with CVSS ratings and remediation steps.</div>
-        <div class="tag-row">
-          <span class="tag green">VAPT</span>
-          <span class="tag blue">Burp Suite</span>
-          <span class="tag">OWASP ZAP</span>
-          <span class="tag">Nmap</span>
-          <span class="tag">Kali Linux</span>
+    <section id="services">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Services</div>
+          <h2>Focused cybersecurity services for lean teams and independent clients</h2>
         </div>
+        <p class="section-intro">A more professional presentation works best when the service categories are concise, outcomes-focused, and easy for clients to scan quickly.</p>
       </div>
-      <span class="project-arrow">→</span>
-    </a>
+      <div class="cards-3">
+        <article class="card reveal">
+          <div class="card-tag">01 / VAPT</div>
+          <h3>Web Application Security Testing</h3>
+          <p>Manual and tool-assisted vulnerability assessments aligned to OWASP guidance, with prioritised findings and actionable remediation notes.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-tag">02 / API</div>
+          <h3>API Security Reviews</h3>
+          <p>Assessment of authentication, authorization, input handling, token security, and sensitive data exposure across REST APIs.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-tag">03 / SIEM</div>
+          <h3>Detection & Log Analysis</h3>
+          <p>Wazuh-based monitoring, alert logic, and event analysis to support blue team visibility and threat detection workflows.</p>
+        </article>
+      </div>
+    </section>
 
-    <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_03" target="_blank" class="project-item">
-      <span class="project-num">02</span>
-      <div>
-        <div class="project-title">API Security Analysis — OWASP crAPI</div>
-        <div class="project-desc">9 vulnerabilities identified and mapped to OWASP API Top 10. Covered BOLA, JWT weaknesses, mass assignment, and excessive data exposure.</div>
-        <div class="tag-row">
-          <span class="tag green">API Security</span>
-          <span class="tag blue">Postman</span>
-          <span class="tag">Docker</span>
-          <span class="tag">jwt.io</span>
+    <section id="projects">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Projects</div>
+          <h2>Selected work that demonstrates offensive, defensive, and reporting capability</h2>
         </div>
+        <p class="section-intro">Project cards are now cleaner and more premium, while keeping your original GitHub work front and center.</p>
       </div>
-      <span class="project-arrow">→</span>
-    </a>
+      <div class="project-grid">
+        <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_01" target="_blank" rel="noreferrer" class="project-card reveal">
+          <div class="project-meta">
+            <span>Case Study 01</span>
+            <span>GitHub</span>
+          </div>
+          <h3>OWASP Juice Shop VAPT Report</h3>
+          <p>Documented web application findings including SQL injection, XSS, and broken access control with severity context and remediation steps.</p>
+          <div class="pills">
+            <span class="pill">Burp Suite</span>
+            <span class="pill">OWASP ZAP</span>
+            <span class="pill">Nmap</span>
+            <span class="pill">Kali Linux</span>
+          </div>
+        </a>
 
-    <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_02" target="_blank" class="project-item">
-      <span class="project-num">03</span>
-      <div>
-        <div class="project-title">Phishing Detection — 3 Live Samples</div>
-        <div class="project-desc">Analysed real phishing campaigns targeting Gmail, Microsoft, and XRP users. Header forensics, IOC extraction, and threat documentation.</div>
-        <div class="tag-row">
-          <span class="tag green">Phishing</span>
-          <span class="tag blue">MXToolbox</span>
-          <span class="tag">VirusTotal</span>
-          <span class="tag">Thunderbird</span>
+        <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_03" target="_blank" rel="noreferrer" class="project-card reveal">
+          <div class="project-meta">
+            <span>Case Study 02</span>
+            <span>GitHub</span>
+          </div>
+          <h3>OWASP crAPI Security Analysis</h3>
+          <p>Mapped API vulnerabilities to OWASP API Top 10 with attention to BOLA, JWT handling, mass assignment, and excessive data exposure.</p>
+          <div class="pills">
+            <span class="pill">Postman</span>
+            <span class="pill">Docker</span>
+            <span class="pill">JWT Analysis</span>
+            <span class="pill">API Testing</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/Satz-N-Sentry/FUTURE_CS_02" target="_blank" rel="noreferrer" class="project-card reveal">
+          <div class="project-meta">
+            <span>Case Study 03</span>
+            <span>GitHub</span>
+          </div>
+          <h3>Phishing Campaign Analysis</h3>
+          <p>Investigated live phishing samples with email header review, IOC extraction, infrastructure checks, and documentation of attacker patterns.</p>
+          <div class="pills">
+            <span class="pill">MXToolbox</span>
+            <span class="pill">VirusTotal</span>
+            <span class="pill">Threat Documentation</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/Satz-N-Sentry/wazuh-nmap-detection" target="_blank" rel="noreferrer" class="project-card reveal">
+          <div class="project-meta">
+            <span>Case Study 04</span>
+            <span>GitHub</span>
+          </div>
+          <h3>Wazuh Real-Time Port Scan Detection</h3>
+          <p>Built a homelab workflow for detecting live Nmap activity with custom rules, alerting logic, and operationally useful visibility.</p>
+          <div class="pills">
+            <span class="pill">Wazuh</span>
+            <span class="pill">Nmap</span>
+            <span class="pill">Detection Rules</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Expertise</div>
+          <h2>A balanced profile across testing, monitoring, and reporting</h2>
         </div>
+        <p class="section-intro">Instead of a long generic skills grid, this layout groups your capabilities into service-relevant domains that feel stronger to recruiters and clients.</p>
       </div>
-      <span class="project-arrow">→</span>
-    </a>
-
-    <a href="https://github.com/Satz-N-Sentry/wazuh-nmap-detection" target="_blank" class="project-item">
-      <span class="project-num">04</span>
-      <div>
-        <div class="project-title">Real-Time Port Scan Detection — Wazuh SIEM</div>
-        <div class="project-desc">Built a Wazuh SIEM homelab detecting live Nmap scans in real time. Custom detection rules and alert pipeline configuration.</div>
-        <div class="tag-row">
-          <span class="tag green">SIEM</span>
-          <span class="tag blue">Wazuh</span>
-          <span class="tag">Nmap</span>
-          <span class="tag">Log Analysis</span>
+      <div class="skills-wrap">
+        <div class="card">
+          <div class="skills-board">
+            <div class="skill-block">
+              <strong>Offensive Security</strong>
+              <div class="skill-list">
+                <span>Burp Suite</span>
+                <span>OWASP ZAP</span>
+                <span>Nmap</span>
+                <span>Kali Linux</span>
+                <span>Metasploit</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <strong>Defensive Operations</strong>
+              <div class="skill-list">
+                <span>Wazuh SIEM</span>
+                <span>Log Analysis</span>
+                <span>Threat Detection</span>
+                <span>Incident Response</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <strong>Web & API Security</strong>
+              <div class="skill-list">
+                <span>REST APIs</span>
+                <span>JWT Analysis</span>
+                <span>OWASP Top 10</span>
+                <span>Postman</span>
+              </div>
+            </div>
+            <div class="skill-block">
+              <strong>Reporting & Communication</strong>
+              <div class="skill-list">
+                <span>VAPT Reports</span>
+                <span>CVSS Ratings</span>
+                <span>Risk Assessment</span>
+                <span>Technical Writing</span>
+              </div>
+            </div>
+          </div>
         </div>
+        <aside class="card proof-card">
+          <div class="card-tag">Professional Positioning</div>
+          <h3>Why this version reads more professionally</h3>
+          <p>The design now leads with SAIZERO as the company identity, while CyberLycan appears as your cyber field name with cleaner typography and stronger positioning.</p>
+          <div class="proof-list">
+            <div class="proof-item">
+              <small>Company-led branding</small>
+              SAIZERO - Ground Zero Defence is now the first thing a recruiter or client sees.
+            </div>
+            <div class="proof-item">
+              <small>Identity clarity</small>
+              CyberLycan is presented as the operating identity rather than competing with the company name.
+            </div>
+            <div class="proof-item">
+              <small>Stronger tone</small>
+              The wording shifts from student-lab energy to freelance consultant positioning.
+            </div>
+          </div>
+        </aside>
       </div>
-      <span class="project-arrow">→</span>
-    </a>
+    </section>
 
-    <a href="https://github.com/Satz-N-Sentry" target="_blank" class="project-item">
-      <span class="project-num">05</span>
-      <div>
-        <div class="project-title">Android Application Security Analysis</div>
-        <div class="project-desc">Static and dynamic analysis of Android APKs. Suspicious permission mapping, malicious behaviour detection, and threat classification report.</div>
-        <div class="tag-row">
-          <span class="tag green">Android</span>
-          <span class="tag blue">Static Analysis</span>
-          <span class="tag">Kali Linux</span>
-          <span class="tag">ADB</span>
+    <section id="contact">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2>Available for freelance security assessments and report-driven engagements</h2>
         </div>
+        <p class="section-intro">Your closing section now feels more confident and commercial, which helps convert visitors into outreach.</p>
       </div>
-      <span class="project-arrow">→</span>
-    </a>
-  </div>
-</section>
+      <div class="contact-grid">
+        <article class="contact-card reveal">
+          <div class="card-tag">Work With SAIZERO</div>
+          <h3>Security testing with clear, client-ready deliverables</h3>
+          <p>If you need a freelancer for web app testing, API assessment, phishing analysis, or security documentation, I can support short engagements with structured output and practical recommendations.</p>
+          <div class="cta-row" style="margin-top: 1.5rem;">
+            <a href="https://www.freelancer.in/u/Satheesh055" target="_blank" rel="noreferrer" class="btn btn-primary">Hire on Freelancer</a>
+            <a href="https://github.com/Satz-N-Sentry" target="_blank" rel="noreferrer" class="btn btn-secondary">View GitHub Profile</a>
+          </div>
+        </article>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-header">
-    <span class="section-num">03 //</span>
-    <h2>Skills & Tools</h2>
-    <div class="section-line"></div>
-  </div>
+        <aside class="contact-card reveal">
+          <div class="card-tag">Profiles</div>
+          <h3>Professional links</h3>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/satheesh-nithiananthan-86a2913ab" target="_blank" rel="noreferrer" class="contact-link">
+              <span>LinkedIn</span>
+              <strong>CyberLycan</strong>
+            </a>
+            <a href="https://github.com/Satz-N-Sentry" target="_blank" rel="noreferrer" class="contact-link">
+              <span>GitHub</span>
+              <strong>github.com/Satz-N-Sentry</strong>
+            </a>
+            <a href="https://tryhackme.com/p/SatzNithii" target="_blank" rel="noreferrer" class="contact-link">
+              <span>TryHackMe</span>
+              <strong>SatzNithii</strong>
+            </a>
+            <a href="https://www.freelancer.in/u/Satheesh055" target="_blank" rel="noreferrer" class="contact-link">
+              <span>Freelancer</span>
+              <strong>Satheesh055</strong>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-label">Offensive</div>
-      <div class="skill-list">
-        <div class="skill-row">Burp Suite</div>
-        <div class="skill-row">OWASP ZAP</div>
-        <div class="skill-row">Nmap</div>
-        <div class="skill-row">Kali Linux</div>
-        <div class="skill-row">Metasploit</div>
+    <footer>
+      <div class="footer-bar">
+        <p><strong>CyberLycan</strong> operating through <strong>SAIZERO - Ground Zero Defence</strong></p>
+        <p>Cybersecurity Analyst | Web, API, SIEM, Reporting</p>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Defensive</div>
-      <div class="skill-list">
-        <div class="skill-row">Wazuh SIEM</div>
-        <div class="skill-row">Log Analysis</div>
-        <div class="skill-row">Threat Detection</div>
-        <div class="skill-row">Incident Response</div>
-        <div class="skill-row">LetsDefend</div>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">API & Web</div>
-      <div class="skill-list">
-        <div class="skill-row">Postman</div>
-        <div class="skill-row">JWT Analysis</div>
-        <div class="skill-row">OWASP Top 10</div>
-        <div class="skill-row">REST APIs</div>
-        <div class="skill-row">Docker</div>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Analysis</div>
-      <div class="skill-list">
-        <div class="skill-row">Wireshark</div>
-        <div class="skill-row">MXToolbox</div>
-        <div class="skill-row">VirusTotal</div>
-        <div class="skill-row">Thunderbird</div>
-        <div class="skill-row">Python</div>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Reporting</div>
-      <div class="skill-list">
-        <div class="skill-row">VAPT Reports</div>
-        <div class="skill-row">CVSS Ratings</div>
-        <div class="skill-row">Risk Assessment</div>
-        <div class="skill-row">Technical Writing</div>
-        <div class="skill-row">Documentation</div>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Platforms</div>
-      <div class="skill-list">
-        <div class="skill-row">TryHackMe</div>
-        <div class="skill-row">HackTheBox</div>
-        <div class="skill-row">Bugcrowd</div>
-        <div class="skill-row">GitHub</div>
-        <div class="skill-row">Linux / CLI</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <span class="section-num">04 //</span>
-    <h2>Contact</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="contact-box">
-    <div>
-      <h3>Available for freelance work</h3>
-      <p>Looking for VAPT reports, security documentation, API testing, or phishing analysis? Let's work together. Fast turnaround, clear deliverables.</p>
-      <a href="https://www.freelancer.in/u/Satheesh055" target="_blank" class="btn">Hire on Freelancer ↗</a>
-    </div>
-    <div class="contact-links">
-      <a href="https://github.com/Satz-N-Sentry" target="_blank" class="contact-link">
-        <span class="contact-label">GitHub</span>
-        github.com/Satz-N-Sentry
-      </a>
-      <a href="https://www.linkedin.com/in/satheesh-nithiananthan-86a2913ab" target="_blank" class="contact-link">
-        <span class="contact-label">LinkedIn</span>
-        Satheesh Nithiananthan
-      </a>
-      <a href="https://www.freelancer.in/u/Satheesh055" target="_blank" class="contact-link">
-        <span class="contact-label">Freelancer</span>
-        Satheesh055
-      </a>
-      <a href="https://tryhackme.com/p/SatzNithii" target="_blank" class="contact-link">
-        <span class="contact-label">TryHackMe</span>
-        SatzNithii
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p><span>//</span> SAIZERO — Ground Zero Defence &nbsp;·&nbsp; CyberLycan — Every shadow has a hunter</p>
-  <p>Built by <span>Satheesh Nithiananthan</span> · 2024–Present</p>
-</footer>
-
+    </footer>
+  </main>
 </body>
 </html>
