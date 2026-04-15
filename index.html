@@ -12,7 +12,6 @@
       --bg: #020202;
       --bg-soft: #0a0a0a;
       --panel: #101010;
-      --panel-soft: #161616;
       --border: rgba(255, 255, 255, 0.08);
       --border-strong: rgba(255, 255, 255, 0.14);
       --text: #f3f3f3;
@@ -301,10 +300,13 @@
 
     .hero-visual {
       padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .logo-frame {
-      position: relative;
+      width: 100%;
       min-height: 510px;
       border-radius: calc(var(--radius) - 6px);
       overflow: hidden;
@@ -317,39 +319,6 @@
       height: 100%;
       object-fit: cover;
       filter: grayscale(100%) contrast(1.08) brightness(0.78);
-    }
-
-    .logo-overlay {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 1.4rem;
-      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.92));
-    }
-
-    .logo-tag {
-      display: inline-flex;
-      margin-bottom: 0.7rem;
-      padding: 0.42rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(137, 199, 255, 0.1);
-      border: 1px solid rgba(137, 199, 255, 0.16);
-      color: var(--brand-sub);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-weight: 700;
-    }
-
-    .logo-overlay h2 {
-      font-family: var(--display);
-      font-size: 1.45rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .logo-overlay p {
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 0.94rem;
     }
 
     section {
@@ -647,11 +616,6 @@
         <aside class="hero-visual">
           <div class="logo-frame">
             <img src="saizero-logo.jpeg" alt="SAIZERO logo">
-            <div class="logo-overlay">
-              <div class="logo-tag">Brand Mark</div>
-              <h2>Dark, minimal, and recognisable.</h2>
-              <p>The helmet visual gives SAIZERO a stronger identity and fits the full black professional cybersecurity theme.</p>
-            </div>
           </div>
         </aside>
       </div>
@@ -815,7 +779,7 @@
         <aside class="card">
           <div class="card-tag">Profile Positioning</div>
           <h3>Cybersecurity Analyst & Security Researcher</h3>
-          <p>This title is broad enough for freelance work, professional enough for clients, and still aligned with the kind of practical security work shown in your projects.</p>
+          <p>This title is broad enough for freelance work, professional enough for clients, and still aligned with the practical security work shown in your projects.</p>
           <div class="pills">
             <span class="pill">Freelance Friendly</span>
             <span class="pill">Client Focused</span>
